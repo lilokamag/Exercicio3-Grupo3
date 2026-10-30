@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ex.3 — Enquadramento Técnico e Legal · Sete Cidades · Ponta Delgada</title>
+<style>
+/* ============================================================
+   Estilo do dossier EX 1, 2 — tema escuro com alternância
+   (folha incorporada: o ficheiro é autónomo)
+   ============================================================ */
+:root, html[data-theme="dark"] {
+    --bg: #0a0e14;
+    --bg-grad-a: #0d1420;
+    --bg-grad-b: #0a0e14;
+    --panel: #121a25;
+    --panel-2: #18222f;
+    --panel-3: #1e2a39;
+    --line: #26313f;
+    --line-soft: #1d2733;
+    --txt: #e7eef7;
+    --txt-soft: #c2cede;
+    --muted: #8fa0b4;
+    --accent: #38bdf8;
+    --accent-2: #22d3ee;
+    --accent-ink: #04222e;
+    --good: #34d399;
+    --warn: #f87171;
+    --shadow: 0 18px 40px -22px rgba(0,0,0,.85);
+    --radius: 14px;
+}
+
+html[data-theme="light"] {
+    --bg: #f4f7fb;
+    --bg-grad-a: #eef4fb;
+    --bg-grad-b: #f7fafd;
+    --panel: #ffffff;
+    --panel-2: #f8fafd;
+    --panel-3: #eef3f9;
+    --line: #dbe3ee;
+    --line-soft: #e8eef6;
+    --txt: #14202e;
+    --txt-soft: #33465c;
+    --muted: #5f7386;
+    --accent: #0369a1;
+    --accent-2: #0891b2;
+    --accent-ink: #ffffff;
+    --good: #047857;
+    --warn: #b91c1c;
+    --shadow: 0 16px 34px -24px rgba(15,32,54,.45);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg-grad-a) 0%, var(--bg-grad-b) 420px);
+    color: var(--txt);
+    font-family: "Segoe UI", "Inter", Arial, Helvetica, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+
+/* ---------- HERO ---------- */
+.hero {
+    position: relative;
+    min-height: 470px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background:
+        radial-gradient(1100px 520px at 18% 12%, rgba(56,189,248,.20), transparent 62%),
+        radial-gradient(900px 480px at 82% 82%, rgba(34,211,238,.14), transparent 60%),
+        linear-gradient(155deg, #0c1523 0%, #0a121c 45%, #0b1a20 100%);
+}
+
+.hero .shade {
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,.022) 0 2px, transparent 2px 9px),
+        linear-gradient(180deg, rgba(4,8,12,.15) 0%, rgba(4,8,12,.72) 78%);
+    pointer-events: none;
+}
+
+.hero-inner {
+    position: relative;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 46px 24px 42px;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: .74rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    border: 1px solid rgba(34,211,238,.35);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+    background: rgba(12,30,40,.5);
+}
+
+.hero-title {
+    font-size: clamp(2.1rem, 5.4vw, 3.6rem);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin: 0 0 14px;
+    color: #f4f9ff;
+    text-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+
+.hero-sub {
+    max-width: 720px;
+    margin: 0 0 26px;
+    font-size: 1.03rem;
+    color: #c3d3e4;
+}
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-cta a {
+    text-decoration: none;
+    font-weight: 650;
+    font-size: .93rem;
+    padding: 11px 20px;
+    border-radius: 10px;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+.hero-cta a:hover { transform: translateY(-2px); }
+
+.hero-cta .solid { background: var(--accent); color: var(--accent-ink); }
+.hero-cta .ghost {
+    color: #dbe9f6;
+    border: 1px solid rgba(219,233,246,.34);
+    background: rgba(255,255,255,.04);
+}
+.hero-cta .ghost:hover { border-color: var(--accent-2); color: #fff; }
+
+/* ---------- FAIXA DE FACTOS ---------- */
+.facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.facts > div {
+    background: var(--panel);
+    padding: 18px 22px;
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.facts b {
+    display: block;
+    font-size: 1rem;
+    color: var(--txt);
+    letter-spacing: -.01em;
+    margin-bottom: 3px;
+}
+
+/* ---------- ESTRUTURA ---------- */
+.container {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 40px 24px 70px;
+}
+
+h1 {
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    line-height: 1.2;
+    letter-spacing: -.02em;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: .92rem;
+    margin: 0 0 30px;
+    max-width: 900px;
+}
+
+h2 {
+    font-size: 1.55rem;
+    letter-spacing: -.015em;
+    margin: 46px 0 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--accent);
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: 1.12rem;
+    letter-spacing: -.01em;
+    margin: 34px 0 10px;
+    color: var(--txt);
+}
+
+h4 {
+    font-size: 1rem;
+    margin: 26px 0 8px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+p { margin: 0 0 12px; }
+
+a { color: var(--accent); }
+
+/* ---------- NAV ---------- */
+.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 9px 14px;
+    margin: 0 -24px 30px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 10px 24px -20px rgba(0,0,0,.9);
+}
+
+.topnav a.nav, .topnav .brand, .topnav button {
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--txt-soft);
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, border-color .16s ease;
+}
+
+.topnav a.nav:hover, .topnav button:hover {
+    background: var(--panel-2);
+    color: var(--txt);
+    border-color: var(--line);
+}
+
+.topnav .brand {
+    color: var(--txt);
+    letter-spacing: .08em;
+    font-size: .78rem;
+    margin-right: auto;
+}
+
+.topnav .brand span { color: var(--accent); }
+
+#themeBtn {
+    border-color: var(--line);
+    background: var(--panel-2);
+    color: var(--accent);
+}
+
+/* ---------- ÍNDICE ---------- */
+.indice {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 20px;
+    margin-bottom: 34px;
+}
+
+.indice-title {
+    font-size: .74rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.idx-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.idx-row:last-child { border-bottom: none; }
+
+.idx-row a {
+    color: var(--txt);
+    text-decoration: none;
+    font-size: .94rem;
+    font-weight: 550;
+}
+
+.idx-row a:hover { color: var(--accent); }
+
+.idx-toggle {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--accent);
+    font-size: .8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+}
+
+.idx-toggle:hover { background: var(--panel-3); }
+
+.idx-sub {
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 0 10px 40px;
+}
+
+.idx-sub.open { display: flex; }
+
+.idx-sub a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .85rem;
+    padding: 3px 0;
+}
+
+.idx-sub a:hover { color: var(--accent); }
+
+.idx-all { border-bottom: none; }
+.idx-all a { color: var(--muted); font-size: .85rem; }
+
+/* ---------- BLOCOS ---------- */
+.bloco {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 0 0 18px;
+}
+
+.bloco > :last-child { margin-bottom: 0; }
+
+.bloco ol, .bloco ul { margin: 0; padding-left: 20px; }
+.bloco li { margin-bottom: 6px; }
+
+.context-box {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-2);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 20px;
+    font-size: .94rem;
+    color: var(--txt-soft);
+}
+
+.destaque {
+    background: linear-gradient(150deg, rgba(56,189,248,.13), rgba(34,211,238,.06));
+    border: 1px solid rgba(56,189,248,.32);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 0 0 22px;
+    font-size: .96rem;
+    color: var(--txt);
+}
+
+.destaque ol, .destaque ul { margin: 0; padding-left: 20px; }
+.destaque li { margin-bottom: 6px; }
+
+/* ---------- NAV EX.3 ---------- */
+.ex3-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 24px;
+}
+
+.ex3-nav a {
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 650;
+    color: var(--txt-soft);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 15px;
+    transition: all .16s ease;
+}
+
+.ex3-nav a:hover {
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ---------- ITENS EX.3 ---------- */
+.ex3-intro {
+    color: var(--txt-soft);
+    max-width: 900px;
+}
+
+.ex3-item {
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-left: 3px solid var(--line);
+    transition: border-color .18s ease, background .18s ease;
+}
+
+.ex3-item:hover { border-left-color: var(--accent); }
+
+.ex3-item p {
+    margin: 0 0 7px;
+    text-align: justify;
+    font-size: .955rem;
+}
+
+.ex3-item p:last-child { margin-bottom: 0; }
+
+.ex3-rot {
+    display: inline;
+    font-weight: 700;
+    color: var(--txt);
+    letter-spacing: -.005em;
+}
+
+.ex3-cit {
+    border-left: 2px solid var(--accent-2);
+    padding: 4px 0 4px 12px;
+    color: var(--txt-soft);
+    font-style: italic;
+}
+
+.sem-fonte { color: var(--warn); font-weight: 700; }
+
+/* ---------- TABELAS ---------- */
+.tabela-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    margin: 18px 0 26px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .86rem;
+    min-width: 720px;
+}
+
+caption {
+    caption-side: top;
+    text-align: left;
+    padding: 12px 14px;
+    font-size: .8rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line-soft);
+}
+
+th, td {
+    border-bottom: 1px solid var(--line-soft);
+    border-right: 1px solid var(--line-soft);
+    padding: 12px 13px;
+    vertical-align: top;
+    text-align: left;
+}
+
+th:last-child, td:last-child { border-right: none; }
+
+thead th {
+    background: var(--panel-3);
+    color: var(--txt);
+    font-size: .78rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+}
+
+tbody tr:nth-child(even) td { background: var(--panel-2); }
+
+tbody tr:hover td { background: var(--panel-3); }
+
+td strong { color: var(--txt); }
+
+.vazio { color: var(--muted); font-style: italic; }
+
+/* ---------- FONTES / NOTAS / RODAPÉ ---------- */
+.versao {
+    margin: 34px 0 0;
+    padding: 14px 18px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    font-size: .87rem;
+    color: var(--muted);
+    background: var(--panel-2);
+}
+
+.nota {
+    margin: 28px 0 0;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    font-size: .84rem;
+    color: var(--muted);
+}
+
+.footer {
+    margin: 30px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: .8rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+section.fontes ul { margin: 0; padding-left: 20px; }
+section.fontes li { margin-bottom: 8px; text-align: justify; font-size: .93rem; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 860px) {
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    body { font-size: 15.5px; }
+}
+
+@media (max-width: 520px) {
+    .facts { grid-template-columns: 1fr; }
+    .container { padding: 28px 16px 50px; }
+    .topnav { margin: 0 -16px 24px; }
+}
+
+/* ---------- IMPRESSÃO ---------- */
+@media print {
+    @page { size: A4; margin: 16mm 14mm 18mm 14mm; }
+
+    html, html[data-theme="dark"] {
+        --bg: #fff; --bg-grad-a: #fff; --bg-grad-b: #fff;
+        --panel: #fff; --panel-2: #fff; --panel-3: #f2f5f9;
+        --line: #c9d3e0; --line-soft: #dde5ee;
+        --txt: #111a26; --txt-soft: #23303f; --muted: #52616f;
+        --accent: #0369a1; --accent-2: #0e7490; --accent-ink: #fff;
+        --warn: #b91c1c; --shadow: none;
+    }
+
+    body { background: #fff; font-size: 9.4pt; }
+
+    .hero {
+        min-height: auto;
+        background: #fff;
+        border-bottom: 2px solid var(--accent);
+    }
+    .hero .shade { display: none; }
+    .hero-inner { padding: 0 0 14px; }
+    .hero-title { color: #0b1622; font-size: 22pt; text-shadow: none; }
+    .hero-sub, .eyebrow { color: #33465c; }
+    .eyebrow { border-color: #b9c9d9; background: none; }
+    .hero-cta, .topnav, #themeBtn, .ex3-nav, .idx-toggle, .nota { display: none !important; }
+
+    .facts { grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
+    .facts > div { padding: 8px 10px; font-size: 7.6pt; }
+
+    .container { width: 100%; padding: 0; }
+
+    .indice { box-shadow: none; padding: 10px 12px; page-break-after: avoid; }
+    .idx-sub { display: flex; }
+
+    h2 { page-break-after: avoid; break-after: avoid; font-size: 13pt; margin-top: 20px; }
+    h3 { page-break-after: avoid; break-after: avoid; font-size: 11pt; }
+    h4 { page-break-after: avoid; break-after: avoid; }
+
+    .bloco, .ex3-item, .context-box, .destaque {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        box-shadow: none;
+        background: #fff;
+    }
+
+    .destaque { border-color: #b9c9d9; }
+    .ex3-item { border-left: 2px solid #c9d3e0; padding: 8px 10px; }
+
+    .tabela-wrap { overflow: visible; border: 1px solid var(--line); }
+    table { min-width: 0; font-size: 7.4pt; }
+    thead { display: table-header-group; }
+    thead th { position: static; }
+    tr { page-break-inside: avoid; break-inside: avoid; }
+
+    a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+    <div class="shade"></div>
+    <div class="hero-inner">
+        <div class="eyebrow">Ponta Delgada · São Miguel · Açores</div>
+        <div class="hero-title">Enquadramento técnico e legal</div>
+        <p class="hero-sub">Exercício 3 — leitura regulamentar de uma operação de construção nova: o que o PDM, o RJUE, o RGEU, o regime de acessibilidades e o SCE exigem.</p>
+        <div class="hero-cta">
+            <a class="solid" href="#indice">Explorar o estudo</a>
+            <a class="ghost" href="#ex3">Ver Ex.3</a>
+            <a class="ghost" href="#fontes">Fontes</a>
+        </div>
+    </div>
+</section>
+
+<div class="facts">
+    <div><b>19/10/2026</b>Data de consulta das fontes</div>
+    <div><b>5 domínios</b>PDM · RJUE · RGEU · Acessibilidade · SCE</div>
+    <div><b>8 912 m²</b>Área útil de pavimento — GES</div>
+    <div><b>Sete Cidades</b>Paisagem Protegida · Domínio Hídrico</div>
+</div>
+
+<div class="container">
+
+<h1>Exercício 3 - Enquadramento Técnico e Legal</h1>
+<p class="subtitle">Operação de construção nova de equipamento público com doca de acesso náutico à Lagoa das Sete Cidades · concelho de Ponta Delgada, ilha de São Miguel, Açores · quadro síntese por domínio regulamentar.</p>
+
+<nav class="topnav">
+    <a class="brand" href="#top">GRUPO 3 <span>· SETE CIDADES</span></a>
+    <a class="nav" href="#top">Início</a>
+    <a class="nav" href="#indice">Índice</a>
+    <a class="nav" href="#ex3-quadro">Quadro</a>
+    <a class="nav" href="#fontes">Fontes</a>
+    <button id="themeBtn" title="Alternar claro/escuro">Dark</button>
+</nav>
+
+<div class="indice" id="indice">
+    <div class="indice-title">Índice</div>
+    <div class="indice-list">
+        <div class="idx-row" data-target="ex3"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#ex3">Ex.3 — Enquadramento Técnico e Legal</a></div>
+        <div class="idx-sub" data-sub="ex3"></div>
+        <div class="idx-row" data-target="fontes"><button class="idx-toggle" aria-label="Expandir">+</button><a href="#fontes">Fontes</a></div>
+        <div class="idx-sub" data-sub="fontes"></div>
+        <div class="idx-row idx-all"><a href="#top">Voltar ao topo</a></div>
+    </div>
+</div>
+
+<!-- ============ EX.3 ============ -->
+<h2 id="ex3">Ex.3 — Enquadramento Técnico e Legal</h2>
+
+<div class="context-box"><strong>Objeto:</strong> operação de construção nova de equipamento público com doca de acesso náutico à Lagoa das Sete Cidades, concelho de Ponta Delgada, ilha de São Miguel, Açores. <strong>Análise por domínio regulamentar:</strong> PDM, RJUE, RGEU, Acessibilidades e SCE. <strong>Data de consulta:</strong> 19/10/2026.</div>
+
+<h3 id="ex3-quadro">Quadro Síntese</h3>
+
+<p class="ex3-intro">Quadro síntese por frente de análise, com os itens verificados, as condições imperativas, as condições condicionais ou a confirmar e as matérias sem fonte disponível.</p>
+
+<div class="tabela-wrap">
+<table>
+    <caption>Quadro síntese — equipamento público (Sete Cidades). Data de consulta: 19/10/2026.</caption>
+    <thead>
+        <tr>
+            <th style="width:11%">Frente</th>
+            <th style="width:17%">Itens verificados</th>
+            <th style="width:32%">Condições imperativas</th>
+            <th style="width:26%">Condicionais / a confirmar</th>
+            <th style="width:14%">SEM FONTE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>PDM</strong></td>
+            <td>Categoria de solo, índice, cércea, afastamentos, implantação, estacionamento, condicionantes sobrepostas e interdições de cave.</td>
+            <td>O uso pretendido é enquadrável, correspondendo a Espaços de Equipamentos Urbanos (Art. 9.º, 43.º e 44.º do PDM de Ponta Delgada). O lote encontra-se sujeito à prevalência das restrições do Domínio Hídrico e do Parque Natural/Paisagem Protegida (Art. 7.º e 8.º). É interdita a construção em terrenos com declive &gt; 25% (Art. 15.º) e totalmente proibida a construção de caves devido a zona de desgaseificação difusa (Art. 54.º). O estacionamento deve ser maximizado no lote com base em estudo próprio (Art. 68.º). Data de consulta: 19/10/2026.<br><br>
+                <span style="color:var(--good);font-weight:700;">[Adenda POBHLSC — DRR 4/2019/A]:</span> Para a Área edificada das Sete Cidades, são exigidos recuos de 10 m ao eixo da via (Art. 31.º). Para equipamentos, admite-se cércea máxima de 6 m e 2 pisos. Se considerado Ocupação Dispersa (Art. 32.º), a área de construção máxima admitida é de apenas 250 m² (implantação máxima de 150 m²), e os recuos à via são de 15 m.</td>
+            <td>Condicionado à criação de via de acesso para veículos de emergência, caso a edificação se encontre a uma distância superior a 30 m da via pública (Art. 15.º). As áreas complementares compatíveis estão limitadas a 20% da área de construção total. Necessário aferir em que subcategoria urbana específica o lote se insere (Área Edificada vs Ocupação Dispersa), pois o limite de 1000 m² pretendido ultrapassa os limites normais da Ocupação Dispersa.</td>
+            <td>Índice de utilização na Área Edificada das Sete Cidades (o regulamento não estabelece um valor numérico para o índice, remetendo a gestão morfológica para o futuro Plano de Pormenor).</td>
+        </tr>
+        <tr>
+            <td><strong>RJUE</strong></td>
+            <td>Tipo de operação, procedimento, elementos instrutórios, submissão, termos de responsabilidade e prazos.</td>
+            <td>Obra de construção de nova edificação obrigatoriamente sujeita a licença por incidir em área de Paisagem Protegida (Art. 2.º e Art. 4.º, n.º 2, alínea h) do Decreto-Lei n.º 555/99). Consulta de entidades promovida através da CCDR como entidade coordenadora (Art. 13.º-A). Exigida instrução integral desmaterializada (PDF/A, DWG georreferenciado e ODS/XLS) com termos de responsabilidade e assinatura digital (Portaria n.º 320/2026/1). Data de consulta: 19/10/2026.</td>
+            <td>O prazo para deliberação final variará entre 120 e 150 dias, condicionado à confirmação de que a área bruta de construção se consolida acima ou abaixo do limiar dos 300 m² definidos na lei (Art. 23.º do Decreto-Lei n.º 555/99).</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>RGEU</strong></td>
+            <td>Altura piso a piso, pé-direito livre, áreas mínimas de espaços, vãos e salubridade.</td>
+            <td>Sendo afeto a equipamento público/estabelecimentos, o edifício tem de assegurar um pé-direito livre mínimo de 3,00 m nesses espaços (Art. 65.º, n.º 3 do Decreto-Lei n.º 38 382). Data de consulta: 19/10/2026.</td>
+            <td>Os afastamentos de 10,00 m entre fachadas (Art. 59.º e 60.º) e os rácios de vãos de iluminação natural iguais ou superiores a 10% com área mínima de 1,08 m² (Art. 71.º) devem ser confirmados caso venham a ser previstos usos habitacionais complementares ou assemelháveis.</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>Acessibilidades (Decreto-Lei n.º 163/2006)</strong></td>
+            <td>Percurso acessível, entradas, circulações, acessos verticais, sanitários e estacionamento.</td>
+            <td>Imposição de percurso contínuo sem barreiras com largura útil ≥ 1,20 m desde a via pública até à entrada e área da doca náutica (Anexo: Cap. 1, 2 e 4). Portas com vão livre de passagem ≥ 0,87 m na entrada principal (Anexo: Cap. 2 e 4). Vencer desníveis com rampa de inclinação ≤ 6% ou elevador acessível, e garantir instalação sanitária adaptada de 1,60 m × 1,70 m (Anexo: Cap. 2). Obrigatória a instrução com Plano de Acessibilidades. Data de consulta: 19/10/2026.</td>
+            <td>O número final de lugares de estacionamento adaptados a prever com dimensão de 2,50 m de largura acrescidos de 1,00 m lateral ficará dependente da lotação global prevista (1 lugar para lotações até 10 lugares) (Anexo: Cap. 2).</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+        <tr>
+            <td><strong>SCE (Decreto-Lei n.º 101-D/2020)</strong></td>
+            <td>Enquadramento GES, requisitos de NZEB, térmica da envolvente, ventilação mecânica, equipamentos e certificação.</td>
+            <td>Classificação como Grande Edifício de Comércio e Serviços (GES) (Art. 3.º), devendo ser projetado como edifício de necessidades quase nulas de energia (NZEB) (Art. 6.º do Decreto-Lei n.º 101-D/2020). Impõe-se a proibição de sistemas baseados em caldeiras autónomas a combustíveis fósseis (Decreto-Lei n.º 11/2025). Emissão obrigatória de Pré-Certificado Energético instruindo o licenciamento e posterior Certificado Energético (Art. 18.º). Data de consulta: 19/10/2026.</td>
+            <td>A instalação de sistema de automação e controlo (SACE) e pontos de carregamento elétrico dependem, respetivamente, da potência instalada (se ≥ 290 kW) e dos lugares de estacionamento (se &gt; 20 lugares). O nível final de mitigação de pontes térmicas e caudais mínimos de ar novo (QAI) dependem do projeto de especialidade térmica/AVAC.</td>
+            <td class="vazio">[POR PREENCHER]</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="versao"><strong>Versão 02:</strong> quadro síntese do Exercício 3 — Enquadramento Técnico e Legal, no estilo do dossier <em>EX 1, 2</em> (tema escuro com alternância claro/escuro, índice expansível e quadro com cabeçalho fixo). Contém apenas o quadro interativo e as fontes; as análises detalhadas de PDM, RJUE, RGEU, Acessibilidades e SCE constam da versão <em>EX 3.html</em>.</div>
+
+<section class="fontes">
+<h2 id="fontes">Fontes</h2>
+<div class="bloco">
+<ul>
+    <li><em>Revisão do Plano Diretor Municipal de Ponta Delgada — Fase 4, Discussão Pública | Volume I, Regulamento</em> (junho de 2026).</li>
+    <li><em>Regulamento do Plano de Ordenamento da Bacia Hidrográfica da Lagoa (POBHL) das Sete Cidades</em> — remetido expressamente pelo PDM para os parâmetros de edificabilidade do perímetro urbano das Sete Cidades; documento não disponibilizado nas fontes consultadas.</li>
+    <li><em>Regime Jurídico da Urbanização e da Edificação (RJUE)</em> — Decreto-Lei n.º 555/99, de 16 de dezembro, na redação atual.</li>
+    <li><em>Portaria n.º 320/2026/1</em>, de 31 de julho — modelos e elementos instrutórios dos procedimentos do RJUE.</li>
+    <li><em>Regulamento Geral das Edificações Urbanas (RGEU)</em> — Decreto-Lei n.º 38 382, de 7 de agosto de 1951, na redação atual.</li>
+    <li><em>Regime da Acessibilidade aos Edifícios e Espaços Públicos</em> — Decreto-Lei n.º 163/2006, de 8 de agosto, e respetivas normas técnicas anexas.</li>
+    <li><em>Sistema de Certificação Energética dos Edifícios (SCE)</em> — Decreto-Lei n.º 101-D/2020, de 7 de dezembro, com as alterações do Decreto-Lei n.º 102/2021, de 19 de novembro, e do Decreto-Lei n.º 11/2025, de 19 de fevereiro.</li>
+    <li><em>Manual SCE</em> — Direção-Geral de Energia e Geologia (DGEG) / ADENE.</li>
+</ul>
+<p class="nota-data" style="color:var(--muted);font-size:.85rem;margin:12px 0 0;">Data de consulta das fontes: 19 de outubro de 2026.</p>
+</div>
+</section>
+
+<div class="nota"><strong>Nota:</strong> página autónoma gerada no OpenCode. Conteúdo de estudo académico — os valores transcritos e as citações legais devem ser confirmados nos diplomas em vigor e nos documentos do POBHL das Sete Cidades antes de qualquer submissão.</div>
+
+<p class="footer">Grupo 3 — Inteligência Artificial Aplicada na Arquitetura | Exercício 3 — Enquadramento Técnico e Legal | Sete Cidades · Ponta Delgada · Açores | 2026</p>
+
+</div>
+
+<script>
+(function () {
+    var b = document.getElementById("themeBtn");
+    var h = document.documentElement;
+    function paint() {
+        b.textContent = h.getAttribute("data-theme") === "light" ? "Light" : "Dark";
+    }
+    try {
+        var s = localStorage.getItem("g3-theme");
+        if (s) h.setAttribute("data-theme", s);
+    } catch (e) {}
+    paint();
+    b.addEventListener("click", function () {
+        var nn = h.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        h.setAttribute("data-theme", nn);
+        try { localStorage.setItem("g3-theme", nn); } catch (e) {}
+        paint();
+    });
+})();
+</script>
+<script>
+(function () {
+    document.querySelectorAll(".idx-row[data-target]").forEach(function (row) {
+        var id = row.getAttribute("data-target");
+        var sec = document.getElementById(id);
+        var btn = row.querySelector(".idx-toggle");
+        var sub = document.querySelector('.idx-sub[data-sub="' + id + '"]');
+        if (!sec || !sub) { btn.style.visibility = "hidden"; return; }
+        var heads = [];
+        var el = sec.nextElementSibling;
+        while (el && el.tagName !== "H2") {
+            if (el.tagName === "H3") heads.push(el);
+            el = el.nextElementSibling;
+        }
+        if (!heads.length) { btn.style.visibility = "hidden"; return; }
+        heads.forEach(function (hh, i) {
+            if (!hh.id) hh.id = id + "-s" + i;
+            var a = document.createElement("a");
+            a.href = "#" + hh.id;
+            a.textContent = hh.textContent;
+            sub.appendChild(a);
+        });
+        btn.addEventListener("click", function () {
+            var open = sub.classList.toggle("open");
+            btn.textContent = open ? "–" : "+";
+        });
+    });
+})();
+</script>
+</body>
+</html>
